@@ -1,6 +1,6 @@
 import tkinter
-import pygetwindow
 from tkinter import font
+import pygetwindow
 
 def movehere():
     if mylist.get(tkinter.ANCHOR) != "":
