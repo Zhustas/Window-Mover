@@ -5,7 +5,6 @@ from tkinter import font
 def movehere():
     if mylist.get(tkinter.ANCHOR) != "":
         selected = pygetwindow.getWindowsWithTitle(mylist.get(tkinter.ANCHOR))[0]
-        
         selected.moveTo(0, 0)
 
 def refresh():
@@ -34,7 +33,6 @@ window.resizable(False, False) # Window is not resizable by width and height
 window_titles = getwindowtitles()
 
 mylist = tkinter.Listbox(window, bg="#6cf3f5", bd=3, height=34, width=80, cursor="hand2")
-
 for title in window_titles:
     mylist.insert(tkinter.END, title)
 mylist.place(x=20, y=20)
