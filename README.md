@@ -7,8 +7,8 @@ I made this, so that you won't need to plug in your other monitor in order to mo
 I made this program using python language.
 
 ## Python modules
-1. **tkinter**
-2. **pygetwindow**
+I used 2 modules: **tkinter** and **pygetwindow**.
+To install PyGetWindow run this:
 ```
 pip install PyGetWindow
 ```
