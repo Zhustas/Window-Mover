@@ -8,6 +8,7 @@ I made this program using python language.
 
 ## Python modules
 I used 2 modules: **tkinter** and **pygetwindow**.  
+
 To install PyGetWindow run this:
 ```
 pip install PyGetWindow
