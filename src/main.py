@@ -23,6 +23,11 @@ def getwindowtitles():
 
     return new_titles
 
+def uponexit():
+    current_window = pygetwindow.getActiveWindow()
+    current_window.moveTo(0, 0)
+    window.destroy()
+
 window = tkinter.Tk()
 window.title("Window Mover (Made by Justas)") # Window's title
 window.geometry("700x600") # Window's width and height
@@ -36,10 +41,11 @@ for title in window_titles:
     mylist.insert(tkinter.END, title)
 mylist.place(x=20, y=20)
 
-button = tkinter.Button(window, command=movehere, text="Move", bg="#15ad66")
+button = tkinter.Button(window, command=movehere, text="Move", bg="#15ad66", cursor="hand2")
 button.place(x=590, y=30)
 
-refresh = tkinter.Button(window, command=refresh, text="Refresh", bg="#15ad66")
+refresh = tkinter.Button(window, command=refresh, text="Refresh", bg="#15ad66", cursor="hand2")
 refresh.place(x=585, y=80)
 
+window.protocol("WM_DELETE_WINDOW", uponexit)
 window.mainloop()
