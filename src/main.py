@@ -1,11 +1,13 @@
 import tkinter
 import pygetwindow
 
+# Moves window
 def movehere():
     if mylist.get(tkinter.ANCHOR) != "":
         selected = pygetwindow.getWindowsWithTitle(mylist.get(tkinter.ANCHOR))[0]
         selected.moveTo(0, 0)
 
+# Refreshes listbox
 def refresh():
     window_titles = getwindowtitles()
 
@@ -13,6 +15,7 @@ def refresh():
     for title in window_titles:
         mylist.insert(tkinter.END, title)
 
+# Gets windows titles
 def getwindowtitles():
     window_titles = pygetwindow.getAllTitles()
 
@@ -23,6 +26,7 @@ def getwindowtitles():
 
     return new_titles
 
+# Function calls, when user want to exit the program
 def uponexit():
     current_window = pygetwindow.getActiveWindow()
     current_window.moveTo(0, 0)
