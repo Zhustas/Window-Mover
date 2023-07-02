@@ -1,0 +1,22 @@
+from bs4 import BeautifulSoup
+import requests
+
+practice_URL = "https://www.stroustrup.com/"
+my_URL = "https://github.com/Zhustas/Window-Mover"
+
+req = requests.get(my_URL)
+
+soup = BeautifulSoup(req.content, 'html.parser')
+title = soup.title.text
+
+def extractversion(title: str):
+    first = title.find('(')
+    second = title.find(')')
+    return title[first + 1:second]
+
+VERSION = "Version 2"
+
+version = extractversion(title)
+
+if VERSION != version:
+    print("Versions are not the same")
