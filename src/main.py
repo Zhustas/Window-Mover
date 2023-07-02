@@ -1,5 +1,8 @@
 import tkinter
 import pygetwindow
+import requests
+from bs4 import BeautifulSoup
+from tkinter import messagebox
 
 def movehere():
     if mylist.get(tkinter.ANCHOR) != "":
@@ -28,6 +31,31 @@ def uponexit():
     current_window.moveTo(0, 0)
     window.destroy()
 
+def extractversion(title: str):
+    first = title.find('(')
+    second = title.find(')')
+    return title[first + 1:second]
+
+def continuewiththisversion():
+    answer = messagebox.askyesno("Warning: old version detected", "You are using old version of Window Mover. Do you want to continue?")
+    if not answer:
+        window.destroy()
+
+
+VERSION = "Version 1"
+REMOTE_REPOSITORY_URL = "https://github.com/Zhustas/Window-Mover"
+
+req = requests.get(REMOTE_REPOSITORY_URL)
+
+soup = BeautifulSoup(req.content, 'html.parser')
+title = soup.title.text
+latest_version = extractversion(title)
+
+version_warning = False
+if VERSION != latest_version:
+    version_warning = True
+
+
 window = tkinter.Tk()
 window.title("Window Mover (Made by Justas)") # Window's title
 window.geometry("700x600") # Window's width and height
@@ -46,6 +74,9 @@ button.place(x=590, y=30)
 
 refresh = tkinter.Button(window, command=refresh, text="Refresh", bg="#15ad66", cursor="hand2")
 refresh.place(x=585, y=80)
+
+if version_warning:
+    window.after(500, continuewiththisversion)
 
 window.protocol("WM_DELETE_WINDOW", uponexit)
 window.mainloop()
