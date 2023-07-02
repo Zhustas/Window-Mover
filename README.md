@@ -7,9 +7,17 @@ I made this, so that you won't need to plug in your other monitor in order to mo
 I made this program using python language.
 
 ## Python modules
-I used 2 modules: **tkinter** and **pygetwindow**.  
+I used 2 modules: **tkinter**, **pygetwindow**, **requests**, **beautifulsoup**.  
 
-To install PyGetWindow run this:
+To install **pygetwindow** run this:
 ```
 pip install PyGetWindow
+```
+To install **requests** run this:
+```
+pip install requests
+```
+To install **beautifulsoup** run this:
+```
+pip install beautifulsoup4
 ```
