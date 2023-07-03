@@ -80,5 +80,3 @@ if version_warning:
 
 window.protocol("WM_DELETE_WINDOW", uponexit)
 window.mainloop()
-
-# Added random comment
