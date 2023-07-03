@@ -1,6 +1,7 @@
 import tkinter
 import pygetwindow
 import requests
+import os
 from bs4 import BeautifulSoup
 from tkinter import messagebox
 
@@ -37,9 +38,20 @@ def extractversion(title: str):
     return title[first + 1:second]
 
 def continuewiththisversion():
-    answer = messagebox.askyesno("Warning: old version detected", "You are using old version of Window Mover. Do you want to continue?")
-    if not answer:
+    answer = messagebox.askyesno("Warning: old version detected", "You are using old version of Window Mover. Do you want to get newest version?")
+    if answer:
+        getnewestversion()
         window.destroy()
+
+def getnewestversion():
+    FILE_URL = "https://raw.githubusercontent.com/Zhustas/Window-Mover/main/src/main.py"
+    FILE_NAME = os.path.basename(__file__)
+
+    req = requests.get(FILE_URL)
+    soup = BeautifulSoup(req.content, 'html.parser')
+
+    f = open(FILE_NAME, "w")
+    f.write(soup.prettify())
 
 
 VERSION = "Version 1"
