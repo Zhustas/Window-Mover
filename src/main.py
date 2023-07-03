@@ -41,6 +41,7 @@ def continuewiththisversion():
     answer = messagebox.askyesno("Warning: old version detected", "You are using old version of Window Mover. Do you want to get newest version?")
     if answer:
         getnewestversion()
+        messagebox.showinfo("Success", "Program has been updated!")
         window.destroy()
 
 def getnewestversion():
