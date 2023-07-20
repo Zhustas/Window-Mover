@@ -1,15 +1,17 @@
-import tkinter
-import pygetwindow
-import requests
-import os
-from bs4 import BeautifulSoup
-from tkinter import messagebox
+import tkinter # For window
+from tkinter import messagebox # For messagebox
+import pygetwindow # For moving window, getting titles
+import requests # For getting the structure of website
+import os # For getting file name
+from bs4 import BeautifulSoup # For getting version and website's title
 
+# Moves selected window to (0, 0)
 def movehere():
     if mylist.get(tkinter.ANCHOR) != "":
         selected = pygetwindow.getWindowsWithTitle(mylist.get(tkinter.ANCHOR))[0]
         selected.moveTo(0, 0)
 
+# Updates the list of window titles
 def refresh():
     window_titles = getwindowtitles()
 
@@ -17,6 +19,7 @@ def refresh():
     for title in window_titles:
         mylist.insert(tkinter.END, title)
 
+# Gets window titles
 def getwindowtitles():
     window_titles = pygetwindow.getAllTitles()
 
@@ -27,16 +30,19 @@ def getwindowtitles():
 
     return new_titles
 
+# Moves this program to (0, 0) before exiting
 def uponexit():
     current_window = pygetwindow.getActiveWindow()
     current_window.moveTo(0, 0)
     window.destroy()
 
+# Extracts version from website's title
 def extractversion(title: str):
     first = title.find('(')
     second = title.find(')')
     return title[first + 1:second]
 
+# Messagebox for asking if new version should be downloaded
 def continuewiththisversion():
     answer = messagebox.askyesno("Warning: old version detected", "You are using old version of Window Mover. Do you want to get newest version?")
     if answer:
@@ -44,6 +50,7 @@ def continuewiththisversion():
         messagebox.showinfo("Success", "Program has been updated!")
         window.destroy()
 
+# Gets new version (if program is run with python code (.py))
 def getnewestversion():
     FILE_URL = "https://raw.githubusercontent.com/Zhustas/Window-Mover/main/src/main.py"
     FILE_NAME = os.path.basename(__file__)
