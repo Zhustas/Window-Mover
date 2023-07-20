@@ -44,7 +44,7 @@ def extractversion(title: str):
 
 # Messagebox for asking if new version should be downloaded
 def continuewiththisversion():
-    answer = messagebox.askyesno("Warning: old version detected", "You are using old version of Window Mover. Do you want to get newest version?")
+    answer = messagebox.askyesno("Warning: older version detected", "You are using older version of Window Mover. Do you want to get newest version?")
     if answer:
         getnewestversion()
         messagebox.showinfo("Success", "Program has been updated!")
