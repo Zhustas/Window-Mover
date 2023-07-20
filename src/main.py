@@ -48,7 +48,7 @@ def continuewiththisversion():
     if answer:
         getnewestversion()
         messagebox.showinfo("Success", "Program has been updated!")
-        window.destroy()
+        destroywindowafterversionupdate()
 
 # Gets new version (if program is run with python code (.py))
 def getnewestversion():
@@ -60,6 +60,10 @@ def getnewestversion():
 
     f = open(FILE_NAME, "w")
     f.write(soup.prettify())
+
+# Destroys window after update
+def destroywindowafterversionupdate():
+    window.destroy()
 
 
 VERSION = "Version 1"
